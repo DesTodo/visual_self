@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset=utf-8>
+		<title>My first three.js app</title>
+		<style>
+			body { margin: 0; }
+			canvas { width: 100%; height: 100% }
+		</style>
+	</head>
+	<body>
+        <h1>Hello World</h1>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/88/three.js"></script>
+		<script>
+
+			var scene = new THREE.Scene();
+			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			document.body.appendChild( renderer.domElement );
+
+			camera.position.y = 10;
+			// camera.position.x = 10;
+			camera.position.z = 15;
+
+
+		    var light;  // A light shining from the direction of the camera.
+		    light = new THREE.DirectionalLight();
+		    light.position.set(0,0,1);
+		    scene.add(light);
+
+			var loader = new THREE.ObjectLoader();
+
+			loader.load(
+			    // resource URL
+			    './standard-male-figure.js',
+
+			    // pass the loaded data to the onLoad function.
+				//Here it is assumed to be an object
+			    function ( human ) {
+					//add the loaded object to the scene\
+					window.human = human;
+					window.human.rotation.y = 0;
+			        scene.add( window.human );
+			    },
+
+			    // Function called when download progresses
+			    function ( xhr ) {
+			        console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
+			    },
+
+			    // Function called when download errors
+			    function ( xhr ) {
+			        console.error( 'An error happened' );
+			    }
+			);
+
+			window.xrotation = 0.00;
+			window.yrotation = 0.01;
+			window.zrotation = 0.00;
+
+			function animate() {
+				requestAnimationFrame( animate );
+
+				window.human.rotation.x += window.xrotation;
+				window.human.rotation.y += window.yrotation;
+				window.human.rotation.z += window.zrotation;
+
+				renderer.render( scene, camera );
+			}
+			animate();
+
+		</script>
+	</body>
+</html>
