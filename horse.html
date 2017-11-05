@@ -45,6 +45,10 @@ function modelLoadedCallback(geometry, materials) {
 
     var object = new THREE.Mesh(geometry, new THREE.MeshFaceMaterial(materials));
 
+
+
+
+
     /* Determine the ranges of x, y, and z in the vertices of the geometry. */
 
     var xmin = Infinity;
@@ -87,10 +91,31 @@ function modelLoadedCallback(geometry, materials) {
     model.add(object);
     model.scale.set(scale,scale,scale);
     rotateX = rotateY = 0;
-    scene.add(model);
+    scene.add(model); // scene become parent to model
+    //animate(model)
     render();
 
 }
+
+// model.children['0'].geometry.morphTargets.forEach(function (e) {
+//                 var geom = new THREE.Geometry();
+//                 geom.vertices = e.vertices;
+//                 geom.faces = model.children['0'].geometry.faces;})
+// var animation
+//
+// function animate(model) {
+//     var materials = model.children['0'].material.materials;
+//
+//     for (var k in materials) {
+//         materials[k].skinning = true;
+//     }
+//
+//
+//     THREE.AnimationMixer.add(model.children['0'].geometry); //
+//     animation = new THREE.Animation(model, "ArmatureAction", THREE.AnimationMixer.CATMULLROM);
+//     animation.play();
+// }
+
 
 
 // potentially use to load multiple models / black background color won't work for all
@@ -114,6 +139,7 @@ function installModel(file, bgColor) {
  */
 function render() {
     renderer.render(scene, camera);
+    //if (animation) animation.update(delta);
 }
 
 //
