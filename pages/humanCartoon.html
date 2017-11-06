@@ -7,6 +7,7 @@
 <body>
   <h2> Cartoon Man Demo </h2>
 
+<script src="../js/three.js"></script>
 <script src="../js/three.min.js"></script>
 <script src="../js/ObjectLoader.js"></script>
 <script src="../js/MaterialLoader.js"></script>
@@ -25,15 +26,15 @@
 
   var materialLoader = new THREE.MaterialLoader()
    //load file material and file object to create mesh 3d object
-  materialLoader.load("../models-obj/CARTOON-GUY.mtl", function(materials){
-    materials.preload()
-    var objectLoader = new THREE.JSONLoader()
-    objectLoader.setMaterials(materials)
+  // materialLoader.load("../models-obj/CARTOON-GUY.mtl", function(materials){
+  //   materials.preload()
+    var objectLoader = new THREE.OBJLoader()
+    // objectLoader.setMaterials(materials)
 
     objectLoader.load("../models-obj/CARTOON-GUY.obj", function(mesh){
       scene.add(mesh)
     })
-  // })
+ // })
 
   camera.position.z = 3
 
@@ -54,6 +55,7 @@
     }
 
   animate()
+
 </script>
 </body>
 </html>

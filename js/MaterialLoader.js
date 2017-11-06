@@ -1,12 +1,3 @@
-import { Vector2 } from '../math/Vector2.js';
-import { FileLoader } from './FileLoader.js';
-import { DefaultLoadingManager } from './LoadingManager.js';
-import * as Materials from '../materials/Materials.js';
-
-/**
- * @author mrdoob / http://mrdoob.com/
- */
-
 function MaterialLoader( manager ) {
 
 	this.manager = ( manager !== undefined ) ? manager : DefaultLoadingManager;
@@ -165,6 +156,3 @@ Object.assign( MaterialLoader.prototype, {
 	}
 
 } );
-
-
-export { MaterialLoader };
