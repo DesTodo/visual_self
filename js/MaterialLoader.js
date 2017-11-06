@@ -1,7 +1,7 @@
-import { Vector2 } from '../math/Vector2.js';
+import { Vector2 } from '.Vector2.js';
 import { FileLoader } from './FileLoader.js';
 import { DefaultLoadingManager } from './LoadingManager.js';
-import * as Materials from '../materials/Materials.js';
+import * as Materials from './materials/Materials.js';
 
 /**
  * @author mrdoob / http://mrdoob.com/
