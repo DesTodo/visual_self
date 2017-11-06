@@ -5,15 +5,10 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.5/dat.gui.min.js"> </script>
     <script type="text/javascript" src="three.min.js"></script>
-    <script type="text/javascript" src="BoxGeometry.js"></script>
-    <script type="text/javascript"> </script>
+    <!-- <script type="text/javascript" src="BoxGeometry.js"></script>
+    <script type="text/javascript"> </script> -->
 
-    <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-        }
-    </style>
+
 </head>
 <script>
     // global variables
@@ -21,6 +16,7 @@
     var scene;
     var camera;
     var control;
+
     function init() {
         // create a scene, that will hold all our elements such as objects, cameras and lights.
         scene = new THREE.Scene();
@@ -43,11 +39,15 @@
         camera.position.y = 200;
         camera.position.z = 300;
         camera.lookAt(scene.position);
-        var dirLight = new THREE.DirectionalLight();
-        scene.add(dirLight);
-        dirLight.position.set(-500, 200, 300);
+        var dirlight = new THREE.DirectionalLight()
+        dirlight.position.set(-500, 200, 300) // light fron different sides
+        scene.add(dirlight)
+      //  dirLight.position.set(-500, 200, 300);
         // add the output of the renderer to the html element
-        document.body.appendChild(renderer.domElement);
+        var theCanvas = document.getElementById("cnvs");
+
+        // renderer = new THREE.CanvasRenderer( { canvas: theCanvas } );
+        // renderer.setSize(theCanvas.width, theCanvas.height);
         control = new function () {
             this.left = camera.left;
             this.right = camera.right;
@@ -76,7 +76,7 @@
     }
     function addCube(x, y) {
         // create a cube and add to scene
-        var cubeGeometry = new THREE.BoxGeometry(50, 50, 50);
+        var cubeGeometry = new THREE.Geometry(50, 50, 50);
         var cubeMaterial = new THREE.MeshLambertMaterial();
         cubeMaterial.color = new THREE.Color(0xffffff * Math.random())
         cubeMaterial.transparent = true;
@@ -101,8 +101,12 @@
         requestAnimationFrame(render);
     }
     // calls the init function when the window is done loading.
-    window.onload = init;
+
+    window.onload = init();
 </script>
 <body>
+
+  <canvas width=1200 height=900 id="cnvs" style="background-color:black"></canvas>
+
 </body>
 </html>

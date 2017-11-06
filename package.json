@@ -11,5 +11,8 @@
   "dependencies": {
     "http-server": "^0.10.0",
     "three": "^0.88.0"
+  },
+  "devDependencies": {
+    "webpack": "^3.8.1"
   }
 }
