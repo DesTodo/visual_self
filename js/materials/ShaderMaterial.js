@@ -1,5 +1,5 @@
-import { Material } from './Material.js';
-import { UniformsUtils } from '../renderers/shaders/UniformsUtils.js';
+var Material = require('./Material.js')
+var UniformsUtils = require('../renderers/shaders/UniformsUtils.js')
 
 /**
  * @author alteredq / http://alteredqualia.com/
@@ -124,4 +124,4 @@ ShaderMaterial.prototype.toJSON = function ( meta ) {
 };
 
 
-export { ShaderMaterial };
+module.exports = { ShaderMaterial };

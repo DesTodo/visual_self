@@ -26,15 +26,15 @@
 
   var materialLoader = new THREE.MaterialLoader()
    //load file material and file object to create mesh 3d object
-  // materialLoader.load("../models-obj/CARTOON-GUY.mtl", function(materials){
-  //   materials.preload()
+  materialLoader.load("../models-obj/CARTOON-GUY.mtl", function(materials){
+    materials.preload()
     var objectLoader = new THREE.OBJLoader()
-    // objectLoader.setMaterials(materials)
+     objectLoader.setMaterials(materials)
 
     objectLoader.load("../models-obj/CARTOON-GUY.obj", function(mesh){
       scene.add(mesh)
     })
- // })
+ })
 
   camera.position.z = 3
 

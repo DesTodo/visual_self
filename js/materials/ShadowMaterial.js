@@ -7,8 +7,8 @@
  * }
  */
 
-import { Material } from './Material.js';
-import { Color } from '../math/Color.js';
+var Material = require('./Material.js')
+var Color    = require('../math/Color.js')
 
 function ShadowMaterial( parameters ) {
 
@@ -32,4 +32,4 @@ ShadowMaterial.prototype.constructor = ShadowMaterial;
 ShadowMaterial.prototype.isShadowMaterial = true;
 
 
-export { ShadowMaterial };
+module.exports = { ShadowMaterial };

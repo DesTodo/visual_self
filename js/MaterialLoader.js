@@ -1,7 +1,7 @@
-import { Vector2 } from '.Vector2.js';
-import { FileLoader } from './FileLoader.js';
-import { DefaultLoadingManager } from './LoadingManager.js';
-import * as Materials from './materials/Materials.js';
+var Vector2 = require('.Vector2.js')
+var FileLoader = require('./FileLoader.js')
+var DefaultLoadingManager = require('./LoadingManager.js')
+var Materials = ('./materials/Materials.js')
 
 /**
  * @author mrdoob / http://mrdoob.com/
@@ -167,4 +167,4 @@ Object.assign( MaterialLoader.prototype, {
 } );
 
 
-export { MaterialLoader };
+module.exports = { MaterialLoader };

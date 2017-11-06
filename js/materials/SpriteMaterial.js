@@ -1,5 +1,5 @@
-import { Material } from './Material.js';
-import { Color } from '../math/Color.js';
+var Material = require('./Material.js')
+var Color    = require('../math/Color.js')
 
 /**
  * @author alteredq / http://alteredqualia.com/
@@ -50,4 +50,4 @@ SpriteMaterial.prototype.copy = function ( source ) {
 };
 
 
-export { SpriteMaterial };
+module.exports = { SpriteMaterial };

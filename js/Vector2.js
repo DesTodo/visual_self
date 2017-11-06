@@ -490,4 +490,4 @@ Object.assign( Vector2.prototype, {
 } );
 
 
-export { Vector2 };
+module.exports =  { Vector2 };
