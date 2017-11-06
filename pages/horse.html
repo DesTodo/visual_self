@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<title>Horse Model Demo</title>
+</head>
+<script type="text/javascript" src="../three.min.js"></script>
+<body>
+  <h2>Horse Model Demo</h2>
+  <canvas width=1200 height=900 id="container" style="background-color:black"></canvas>
+</body>
+
+<script>
+  var scene = new THREE.Scene();
+  var theCanvas = document.getElementById("container");
+  var camera = new THREE.PerspectiveCamera( 50, theCanvas.width / theCanvas.height, 0.1, 100 );
+  // var renderer = new THREE.WebGLRenderer();
+  //
+  // document.body.appendChild( renderer.domElement );
+  function createLight() {
+      var light = new THREE.DirectionalLight()
+      light.position.set(0,0,10);
+      scene.add(light)
+  }
+  var theCanvas = document.getElementById("container");
+  var renderer = new THREE.CanvasRenderer({canvas: theCanvas});
+  var model = new THREE.Object3D();
+  function init() {
+      try {
+          camera.position.z = 25;
+          createLight()
+          installModel("horse.js");
+          render();
+          document.addEventListener("keydown", keyControl, false)
+       }
+       catch (e) {
+          console.log(e)
+       }
+  }
+
+  function modelLoadedCallback(geometry, materials) {
+      var object = new THREE.Mesh(geometry, new THREE.MeshFaceMaterial(materials));
+      model.add(object);
+      rotateX = rotateY = 0;
+      scene.add(model);
+      render();
+  }
+
+  function installModel(file, bgColor) {
+      if (model) {
+          scene.remove(model);
+      }
+      renderer.setClearColor(bgColor);
+      render();
+      var loader = new THREE.JSONLoader();
+      loader.load("../models-json/" + file, modelLoadedCallback);
+  }
+
+  function render() {
+      renderer.render(scene, camera);
+  }
+
+  function keyControl(evt) {
+      var rotationChanged = true;
+    switch (evt.keyCode) {
+        case 37: rotateY -= 0.05; break;
+        case 39: rotateY += 0.05; break;
+        case 38: rotateX -= 0.05; break;
+        case 40: rotateX += 0.05; break;
+        case 13: rotateX = rotateY = 0; break;
+        case 36: rotateX = rotateY = 0; break;
+        default: rotationChanged = false;
+    }
+    if (model && rotationChanged) {
+         model.rotation.set(rotateX,rotateY,0);
+         render();
+       evt.preventDefault();
+    }
+  }
+    init()
+</script>
+</html>
