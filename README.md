@@ -1,4 +1,5 @@
-** Instructions for setup: **
+
+## Instructions for setup: ##
 
 1. Clone Repo to local machine.
 2. NPM install
