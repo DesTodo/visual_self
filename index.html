@@ -26,8 +26,8 @@
         <a class="nav-link" id="human">Human</a>
         <a class="nav-link" id="hand">Hand</a>
         <a class="nav-link" id="foot">Foot</a>
-        <a class="nav-link" id="foot">Abdomen</a>
-        <a class="nav-link" id="foot">Cranium</a>
+        <a class="nav-link" id="abdomen">Abdomen</a>
+        <a class="nav-link" id="cranium">Cranium</a>
     </nav>
     <canvas id="canvas"></canvas>
     <div class="title"></div>
@@ -43,10 +43,25 @@
     var scene = new THREE.Scene();
     var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
     var renderer = new THREE.WebGLRenderer({canvas: document.getElementById("canvas")});
-    scene.background = new THREE.Color( 0x778899 );
+
+    var texture = new THREE.TextureLoader().load( "./resources/knee-xray.jpg");
+    texture.wrapS = THREE.RepeatWrapping;
+    texture.wrapT = THREE.RepeatWrapping;
+    texture.repeat.set( 1, 1 );
+
+    scene.background = texture
+
+
+    //scene.background = new THREE.Color( 0x778899 );
+
+
+
+
     // should fix pixalation in horse and alien
     renderer.setPixelRatio( window.devicePixelRatio );
     renderer.setSize(innerWidth, innerHeight);
+
+
 
     camera.position.y = 10;
     camera.position.z = 15;
@@ -72,10 +87,10 @@
 
             human.traverse( function (child ) {
                 if ( child instanceof THREE.Mesh ) {
-                    child.material.color.setHex(0xD2B48C);
+                    child.material.color.setHex(0xD9AAAA);
                 }
             } );
-
+            //0xD9AAAA
             scene.add(human);
 
             window.xrotation = 0.00;
@@ -121,17 +136,47 @@
         resetCamera();
     }
 
+    function clickAbdomen() {
+      overlay.innerHTML = TEXT.abdomen;
+      resetCamera();
+      setTimeout(
+        function(){
+          new TWEEN.Tween(camera.position)
+                 .to({x: 5, y: 12, z: 4}, 2000 )
+                 .start();
+            new TWEEN.Tween(human.rotation)
+                .to({x: 0, y: 0, z: 0}, 2000 )
+                .start();
+          }
+          , 1000);
+      }
+
     function clickFoot() {
         overlay.innerHTML = TEXT.foot;
         resetCamera();
         setTimeout(
             function(){
+              new TWEEN.Tween(camera.position)
+                .to({x: 6.3, y: 0, z: 3}, 2000 )
+                .start();
+              new TWEEN.Tween(human.rotation)
+                .to({x: 1, y: 0, z: 0}, 2000 )
+                .start();
+            }
+            , 1000);
+    }
+
+    function clickCranium() {
+        overlay.innerHTML = TEXT.cranium;
+        resetCamera();
+        setTimeout(
+            function(){
                 new TWEEN.Tween(camera.position)
-                    .to({x: 6.3, y: 2, z: 2}, 2000 )
+                    .to({x: 6.3, y: 18, z: 4}, 2000 )
                     .start();
-                new TWEEN.Tween(camera.rotation)
-                    .to({x: -0.85, y: 0, z: 0}, 2000 )
-                    .start();
+                    new TWEEN.Tween(human.rotation)
+                          .to({x: 0, y: 1, z: 0}, 2000 )
+                          .start();
             }
             , 1000);
     }
@@ -155,8 +200,8 @@
             .start();
     }
 
-    document.getElementById("hand").addEventListener("click", clickHand);
     document.getElementById("abdomen").addEventListener("click", clickAbdomen);
+    document.getElementById("hand").addEventListener("click", clickHand);
     document.getElementById("cranium").addEventListener("click", clickCranium);
     document.getElementById("foot").addEventListener("click", clickFoot);
     document.getElementById("human").addEventListener("click", clickHuman);
