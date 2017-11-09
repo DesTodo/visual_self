@@ -14,26 +14,41 @@
         .wrapper{ width: 100%; height: 100%; position: relative; }
         canvas { position: absolute; top: 0; }
         .title { position: absolute; top: 0; left: 0; right: 0; background-color: white;}
-        nav { position:absolute; top:0; z-index: 1; }
-        #overlay { position: absolute; top:50px; right: 50%; color: yellow; }
+        nav { position:absolute; top:0; z-index: 1; color: white}
+        #overlay { position: absolute; top:50px; right: 50%; color: white; background-color: #3B72A3; opacity: 0.8}
     </style>
 </head>
 <body>
 
 <div class="wrapper">
     <nav class="nav">
-        <a>Human Anatomy</a>
-        <a class="nav-link" id="human">Human</a>
-        <a class="nav-link" id="hand">Hand</a>
-        <a class="nav-link" id="foot">Foot</a>
-        <a class="nav-link" id="abdomen">Abdomen</a>
-        <a class="nav-link" id="cranium">Cranium</a>
-    </nav>
+    <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link" id="human">Human</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="hand">Hand</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="foot">Foot</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="abdomen">Abdomen</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="cranium">Cranium</a>
+    </li>
+  </ul>
+</nav>
     <canvas id="canvas"></canvas>
     <div class="title"></div>
-    <div id="overlay">
-        From Creepy Alien to Golden Oscar
+
+      <div id="overlay">
     </div>
+
+    <!-- <div id="overlay">
+
+    </div> -->
 </div>
 
 <script>
@@ -102,7 +117,7 @@
                 window.human.rotation.x += window.xrotation;
                 window.human.rotation.y += window.yrotation;
                 window.human.rotation.z += window.zrotation;
-
+                //activeTab();
                 TWEEN.update();
 
                 renderer.render( scene, camera );
@@ -171,15 +186,22 @@
         resetCamera();
         setTimeout(
             function(){
-                new TWEEN.Tween(camera.position)
-                    .to({x: 6.3, y: 18, z: 4}, 2000 )
+              new TWEEN.Tween(camera.position)
+                    .to({x: 5.3, y: 17, z: 4}, 2000 )
                     .start();
                     new TWEEN.Tween(human.rotation)
-                          .to({x: 0, y: 1, z: 0}, 2000 )
+                          .to({x: 0.1, y: -1.5, z: 0}, 2000 )
                           .start();
             }
-            , 1000);
+            , 500);
     }
+//chest
+    // new TWEEN.Tween(camera.position)
+    //                 .to({x: 6.3, y: 15, z: 3}, 2000 )
+    //                 .start();
+    //                 new TWEEN.Tween(human.rotation)
+    //                       .to({x: 0, y: 1, z: 0}, 2000 )
+    //                       .start();
 
     function resetCamera() {
         console.log("camera.position", camera.position);
@@ -199,6 +221,16 @@
             .to({x: 0, y: 0, z: 0}, 2000 )
             .start();
     }
+
+    list = document.getElementsByTagName('a')
+
+    // function activeTab(list){
+    //   list.forEach(function(a){
+    //     debugger;
+    //     if a === event.target
+    //       a.setAttribute("class": "nav-link active";)
+    // }}
+
 
     document.getElementById("abdomen").addEventListener("click", clickAbdomen);
     document.getElementById("hand").addEventListener("click", clickHand);
