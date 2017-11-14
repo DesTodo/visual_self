@@ -42,19 +42,11 @@
 </nav>
     <canvas id="canvas"></canvas>
     <div class="title"></div>
-
-      <div id="overlay">
-    </div>
-
-    <!-- <div id="overlay">
-
-    </div> -->
+    <div id="overlay"></div>
 </div>
 
 <script>
     var overlay = document.getElementById("overlay");
-
-//    var renderer = new THREE.CanvasRenderer({canvas: theCanvas});
     var scene = new THREE.Scene();
     var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
     var renderer = new THREE.WebGLRenderer({canvas: document.getElementById("canvas")});
@@ -66,17 +58,8 @@
 
     scene.background = texture
 
-
-    //scene.background = new THREE.Color( 0x778899 );
-
-
-
-
-    // should fix pixalation in horse and alien
     renderer.setPixelRatio( window.devicePixelRatio );
     renderer.setSize(innerWidth, innerHeight);
-
-
 
     camera.position.y = 10;
     camera.position.z = 15;
@@ -99,13 +82,12 @@
             human.position.x = 6;
             human.rotation.y = 6;
             window.human = human;
-
+            // traverse 3d model's mesh nodes to change material color
             human.traverse( function (child ) {
                 if ( child instanceof THREE.Mesh ) {
                     child.material.color.setHex(0xD9AAAA);
                 }
             } );
-            //0xD9AAAA
             scene.add(human);
 
             window.xrotation = 0.00;
@@ -117,9 +99,7 @@
                 window.human.rotation.x += window.xrotation;
                 window.human.rotation.y += window.yrotation;
                 window.human.rotation.z += window.zrotation;
-                //activeTab();
                 TWEEN.update();
-
                 renderer.render( scene, camera );
             }
             animate();
@@ -195,13 +175,6 @@
             }
             , 500);
     }
-//chest
-    // new TWEEN.Tween(camera.position)
-    //                 .to({x: 6.3, y: 15, z: 3}, 2000 )
-    //                 .start();
-    //                 new TWEEN.Tween(human.rotation)
-    //                       .to({x: 0, y: 1, z: 0}, 2000 )
-    //                       .start();
 
     function resetCamera() {
         console.log("camera.position", camera.position);
@@ -221,16 +194,6 @@
             .to({x: 0, y: 0, z: 0}, 2000 )
             .start();
     }
-
-    list = document.getElementsByTagName('a')
-
-    // function activeTab(list){
-    //   list.forEach(function(a){
-    //     debugger;
-    //     if a === event.target
-    //       a.setAttribute("class": "nav-link active";)
-    // }}
-
 
     document.getElementById("abdomen").addEventListener("click", clickAbdomen);
     document.getElementById("hand").addEventListener("click", clickHand);
