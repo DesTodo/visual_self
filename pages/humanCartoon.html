@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<title> Cartoon Man Demo </title>
+</head>
+
+<body>
+  <h2> Cartoon Man Demo </h2>
+
+<script src="../js/three.js"></script>
+<script src="../js/three.min.js"></script>
+<script src="../js/ObjectLoader.js"></script>
+<script src="../js/MaterialLoader.js"></script>
+
+<script>
+  var scene        = new THREE.Scene()
+
+  var camera       = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000)
+
+  var renderer     = new THREE.WebGLRenderer()
+  renderer.setSize( window.innerWidth, window.innerHeight)
+  document.body.appendChild( renderer.domElement )
+
+  var ambientLight = new THREE.AmbientLight( 0xFFFFFF, 0.8)
+  scene.add(ambientLight)
+
+  var materialLoader = new THREE.MaterialLoader()
+   //load file material and file object to create mesh 3d object
+  materialLoader.load("../models-obj/CARTOON-GUY.mtl", function(materials){
+    materials.preload()
+    var objectLoader = new THREE.OBJLoader()
+     objectLoader.setMaterials(materials)
+
+    objectLoader.load("../models-obj/CARTOON-GUY.obj", function(mesh){
+      scene.add(mesh)
+    })
+ })
+
+  camera.position.z = 3
+
+  // var update = function() {
+  //
+  // }
+
+  var render = function()
+    {
+      renderer.render( scene, camera)
+    }
+
+
+  var animate = function()
+    {
+      requestAnimationFrame( animate )
+      render()
+    }
+
+  animate()
+
+</script>
+</body>
+</html>
