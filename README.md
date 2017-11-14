@@ -15,17 +15,17 @@ _note: 3D animation is heavy on the browser and loading time will vary based on 
 
 ## IT1 (current): render and interact with a 3D human model:
 
-![alt text][image]
+![alt text][image1]
 
-[image]: ./snapshots/bodyFull.png "3D Human Model"
+[image1]: ./snapshots/bodyFull.png "3D Human Model"
 
-![alt text][image]
+![alt text][image2]
 
-[image]: ./snapshots/bodyCloseUp.png "3D Human Model Close Up"
+[image2]: ./snapshots/bodyCloseUp.png "3D Human Model Close Up"
 
 
 ## IT0: parsing, displaying and rotating a basic 3D model:
 
-![alt text][image]
+![alt text][image3]
 
-[image]: ./snapshots/alienModel.png "Basic Human Model in 3D env"
+[image3]: ./snapshots/alienModel.png "Basic Human Model in 3D env"
