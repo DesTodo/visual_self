@@ -12,3 +12,20 @@ You can access and interact with app here: [https://destodo.github.io/visual_sel
 4. Homepage is the directory from where you can access individual 3D model objects.
 
 _note: 3D animation is heavy on the browser and loading time will vary based on browser and internet speed_
+
+## IT1 (current): render and interact with a 3D human model:
+
+![alt text][image]
+
+[image]: ./snapshots/bodyFull.png "3D Human Model"
+
+![alt text][image]
+
+[image]: ./snapshots/bodyCloseUp.png "3D Human Model Close Up"
+
+
+## IT0: parsing, displaying and rotating a basic 3D model:
+
+![alt text][image]
+
+[image]: snapshots/alienModel.png "Basic Human Model in 3D env"
