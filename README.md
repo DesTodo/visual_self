@@ -1,8 +1,8 @@
-## Visual Self: ##
+## Visual Self ##
 
 An interactive educational application where users can interact with 3D models to learn about body parts and anatomical systems. In the current iteration, the user interacts with the human 3D object by selecting a body part from the navbar. Information is displayed and the model is rotated to zoom in and provide a visual representation of the chosen body part. This project is built in Javascript with: WebGL, Three.js and Tween.js
 
-You can access and interact with app here: [https://destodo.github.io/visual_self/]
+You can access and interact with app here: https://destodo.github.io/visual_self/
 
 ## Instructions for setup to run app locally: ##
 
