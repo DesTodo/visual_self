@@ -28,4 +28,4 @@ _note: 3D animation is heavy on the browser and loading time will vary based on 
 
 ![alt text][image]
 
-[image]: snapshots/alienModel.png "Basic Human Model in 3D env"
+[image]: ./snapshots/alienModel.png "Basic Human Model in 3D env"
