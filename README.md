@@ -1,9 +1,14 @@
+## Visual Self: ##
 
-## Instructions for setup: ##
+An interactive educational application where users can interact with 3D models to learn about body parts and anatomical systems. In the current iteration, the user interacts with the human 3D object by selecting a body part from the navbar. Information is displayed and the model is rotated to zoom in and provide a visual representation of the chosen body part. This project is built in Javascript with: WebGL, Three.js and Tween.js
 
-1. Clone Repo to local machine.
+You can access and interact with app here: [https://destodo.github.io/visual_self/]
+
+## Instructions for setup to run app locally: ##
+
+1. Clone repo to local machine.
 2. NPM install
-3. http-server
+3. NPM start
 4. Homepage is the directory from where you can access individual 3D model objects.
 
-*** note: 3D animation can be heavy on the browser and loading time will vary based on browser and internet speed***
+_note: 3D animation is heavy on the browser and loading time will vary based on browser and internet speed_
